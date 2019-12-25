@@ -1,15 +1,9 @@
 import java.util.ArrayList;
-import java.util.Optional;
 
 public class Kata {
-    public static void main(String[] args) {
-        //abcde
-        System.out.println(longestAlpabeticalSubstring("z"));
-    }
 
     public static String longestAlpabeticalSubstring(String text) {
         if (text.length() == 1) return text;
-        System.out.println(text);
         char[] chars = text.toCharArray();
         StringBuilder sub = new StringBuilder();
 
@@ -28,16 +22,13 @@ public class Kata {
 
             if (c2 < c1) {
                 subs.add(sub.toString());
-                System.out.println(sub);
                 sub.setLength(0);
             }
 
             if (c2 < c1 && i == chars.length - 1) {
                 subs.add(Character.toString(c2));
             }
-
         }
-        System.out.println(sub);
         System.out.println(subs);
 
         return subs.stream().reduce((acc, v) -> v.length() > acc.length() ? v : acc).get();
